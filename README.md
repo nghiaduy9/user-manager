@@ -45,6 +45,7 @@ Array of objects:
 - `name` (string): User's full name
 - `email` (string): User's email
 - `birthday` (string): User's birthday
+- `privilege` (string): User's privilege
 - `createdAt` (object): Time at which the user was created
 - `updatedAt` (object): Time at which the user was updated
 
@@ -74,6 +75,7 @@ Array of objects:
 - `name` (string): User's fullname
 - `email` (string): User's email
 - `birthday` (string): User's birthday
+- `privilege` (string): User's privilege
 - `createdAt` (object): Time at which the user was created
 - `updatedAt` (object): Time at which the user was updated
 

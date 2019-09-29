@@ -33,6 +33,7 @@ server.post('/users', async (req, res) => {
       name: name,
       email: email,
       birthday: birthday,
+      privilege: "normal",
       createdAt: new Date(),
       updatedAt: new Date()
     })
