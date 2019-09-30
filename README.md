@@ -19,8 +19,23 @@ $ yarn start # yarn dev for development
 
 ### Environment Variables
 
+- `NODE_ENV` (string): "development" or "production" environment
 - `PORT` (number): Port number to run the server
 - `MONGODB_URI` (string): MongoDB URI
+- `MONGODB_DB_NAME` (string): Database name
+
+### Database (MongoDB)
+
+#### User schema ("users" collection)
+
+- `_id` (string): ID of the user
+- `username` (string): Username
+- `name` (string): User's full name
+- `email` (string): User's email
+- `birthday` (string): User's birthday
+- `privilege` (string): User's privilege
+- `createdAt` (object): Time at which the user was created
+- `updatedAt` (object): Time at which the user was updated
 
 ### Routes
 
