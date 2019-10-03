@@ -28,14 +28,14 @@ $ yarn start # yarn dev for development
 
 #### User schema ("users" collection)
 
-- `_id` (string): ID of the user
+- `_id` (ObjectID): ID of the user
 - `username` (string): Username
 - `name` (string): User's full name
 - `email` (string): User's email
-- `birthday` (string): User's birthday
+- `birthday` (Date): User's birthday
 - `privilege` (string): User's privilege
-- `createdAt` (object): Time at which the user was created
-- `updatedAt` (object): Time at which the user was updated
+- `createdAt` (Date): Time at which the user was created
+- `updatedAt` (Date): Time at which the user was updated
 
 ### Routes
 
@@ -65,7 +65,7 @@ See [User schema](#user-schema-users-collection).
 - `username` (string): Username
 - `name` (string): User's fullname
 - `email` (string): User's email
-- `birthday` (string): User's birthday
+- `birthday` (Date): User's birthday
 
 #### GET `/users/:id`
 
