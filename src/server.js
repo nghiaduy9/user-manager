@@ -29,11 +29,11 @@ server.post('/users', async (req, res) => {
   try {
     const Users = await getCollection('users')
     await Users.insertOne({
-      username: username,
-      name: name,
-      email: email,
-      birthday: birthday,
-      privilege: "normal",
+      username,
+      name,
+      email,
+      birthday,
+      privilege: 'normal',
       createdAt: new Date(),
       updatedAt: new Date()
     })
@@ -52,32 +52,6 @@ server.get('/users/:id', async (req, res) => {
     const Users = await getCollection('users')
     let result = await Users.findOne({ _id: new mongo.ObjectID(id) })
     res.code(200).send(result)
-  } catch (err) {
-    res.code(500)
-  }
-})
-
-/**
- * Update an user with id
- */
-server.post('/users/update/:id', async (req, res) => {
-  const id = req.params.id
-  const { username, name, email, birthday } = req.body
-  try {
-    const Users = await getCollection('users')
-    await Users.updateOne(
-      { _id: new mongo.ObjectID(id) },
-      {
-        $set: {
-          username: username,
-          name: name,
-          email: email,
-          birthday: birthday,
-          updatedAt: new Date()
-        }
-      }
-    )
-    res.code(204)
   } catch (err) {
     res.code(500)
   }

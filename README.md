@@ -54,15 +54,7 @@ $ yarn start # yarn dev for development
 ##### Response body
 
 Array of objects:
-
-- `_id` (string): ID of the user
-- `username` (string): Username
-- `name` (string): User's full name
-- `email` (string): User's email
-- `birthday` (string): User's birthday
-- `privilege` (string): User's privilege
-- `createdAt` (object): Time at which the user was created
-- `updatedAt` (object): Time at which the user was updated
+See [User schema](#user-schema-users-collection).
 
 #### POST `/users`
 
@@ -85,19 +77,4 @@ Array of objects:
 
 ##### Response body
 
-- `_id` (string): ID of the user
-- `username` (string): Username
-- `name` (string): User's fullname
-- `email` (string): User's email
-- `birthday` (string): User's birthday
-- `privilege` (string): User's privilege
-- `createdAt` (object): Time at which the user was created
-- `updatedAt` (object): Time at which the user was updated
-
-#### DELETE `/users/:id`
-
-> Delete the user with `id`
-
-##### Route parameters
-
-- `id` (string): ID of the user
+See [User schema](#user-schema-users-collection).

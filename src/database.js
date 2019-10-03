@@ -1,4 +1,3 @@
-
 const { MongoClient } = require('mongodb')
 
 const { MONGODB_URI, MONGODB_DB_NAME } = process.env
