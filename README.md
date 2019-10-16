@@ -33,6 +33,8 @@ $ yarn start # yarn dev for development
 - `name` (string): User's full name
 - `email` (string): User's email
 - `birthday` (Date): User's birthday
+- `linkedAccounts` (object): User's linked social accounts
+  - `facebook` (string): User's Facebook account ID
 - `privilege` (string): User's privilege
 - `createdAt` (Date): Time at which the user was created
 - `updatedAt` (Date): Time at which the user was updated
@@ -66,6 +68,8 @@ See [User schema](#user-schema-users-collection).
 - `name` (string): User's fullname
 - `email` (string): User's email
 - `birthday` (Date): User's birthday
+- `linkedAccounts` (object): User's linked social accounts
+  - `facebook` (string): User's Facebook account ID
 
 #### GET `/users/:id`
 

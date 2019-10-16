@@ -25,7 +25,7 @@ server.get('/users', async (req, res) => {
  * Add an user
  */
 server.post('/users', async (req, res) => {
-  const { username, name, email, birthday } = req.body
+  const { username, name, email, birthday, linkedAccounts } = req.body
   try {
     const Users = await getCollection('users')
     await Users.insertOne({
@@ -33,6 +33,7 @@ server.post('/users', async (req, res) => {
       name,
       email,
       birthday,
+      linkedAccounts,
       privilege: 'normal',
       createdAt: new Date(),
       updatedAt: new Date()
