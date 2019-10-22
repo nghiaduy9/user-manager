@@ -41,7 +41,7 @@ $ yarn start # yarn dev for development
 
 ### Routes
 
-#### GET `/`
+#### 1. GET `/`
 
 > Just for testing
 
@@ -49,7 +49,7 @@ $ yarn start # yarn dev for development
 
 - `iam`: `"/"`
 
-#### GET `/users`
+#### 2. GET `/users`
 
 > Get all users
 
@@ -58,7 +58,7 @@ $ yarn start # yarn dev for development
 Array of objects:
 See [User schema](#user-schema-users-collection).
 
-#### POST `/users`
+#### 3. POST `/users`
 
 > Add a new user
 
@@ -71,7 +71,7 @@ See [User schema](#user-schema-users-collection).
 - `linkedAccounts` (object): User's linked social accounts
   - `facebook` (string): User's Facebook account ID
 
-#### GET `/users/:id`
+#### 4. GET `/users/:id`
 
 > Get the user with `id`
 
