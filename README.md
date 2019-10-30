@@ -82,3 +82,17 @@ See [User schema](#user-schema-users-collection).
 ##### Response body
 
 See [User schema](#user-schema-users-collection).
+
+#### 5. GET `/users/linkedAccounts/:socialNetwork/:id`
+
+> Get an user via linked social network accounts
+
+##### Route parameters
+
+- `socialNetwork` (string): Social network name. Currently, only "facebook" is valid
+- `id` (string): ID of the account
+
+##### Response body
+
+See [User schema](#user-schema-users-collection).
+
