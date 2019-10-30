@@ -77,7 +77,7 @@ See [User schema](#user-schema-users-collection).
 
 ##### Route parameters
 
-- `id` (string): ID of the user
+- `id` (ObjectID): ID of the user
 
 ##### Response body
 
@@ -95,4 +95,3 @@ See [User schema](#user-schema-users-collection).
 ##### Response body
 
 See [User schema](#user-schema-users-collection).
-
