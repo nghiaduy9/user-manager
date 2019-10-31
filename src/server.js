@@ -25,7 +25,7 @@ server.get('/users', async (req, res) => {
  * Add an user
  */
 server.post('/users', async (req, res) => {
-  const { username, name, email, birthday, linkedAccounts, facebook } = req.body
+  const { username, name, email, birthday, linkedAccounts } = req.body
   try {
     const Users = await getCollection('users')
     await Users.insertOne({
@@ -34,7 +34,6 @@ server.post('/users', async (req, res) => {
       email,
       birthday,
       linkedAccounts,
-      facebook,
       privilege: 'normal',
       createdAt: new Date(),
       updatedAt: new Date()
@@ -59,12 +58,11 @@ server.get('/users/:id', async (req, res) => {
   }
 })
 
-server.get('/users/service/:socialNetwork/:id', async (req, res) => {
-  // const socialNetwork = req.params.socialNetwork
+server.get('/users/linkedAccounts/:service/:id', async (req, res) => {
   const id = req.params.id
   try {
     const Users = await getCollection('users')
-    let result = await Users.findOne({ facebook: id })
+    let result = await Users.findOne({ linkedAccounts: { "facebook": id }})
     res.code(200).send(result)
   } catch (err) {
     res.code(500)
