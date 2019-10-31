@@ -33,7 +33,7 @@ $ yarn start # yarn dev for development
 - `name` (string): User's full name
 - `email` (string): User's email
 - `birthday` (Date): User's birthday
-- `linkedAccounts` (object): User's linked services
+- `linkedAccounts` (object): User's linked services, mapping from service names to account IDs
   - `facebook` (string): Facebook ID
 - `privilege` (string): User's privilege
 - `createdAt` (Date): Time at which the user was created
@@ -65,11 +65,11 @@ See [User schema](#user-schema-users-collection).
 ##### Request body
 
 - `username` (string): Username
-- `name` (string): User's fullname
+- `name` (string): User's full name
 - `email` (string): User's email
 - `birthday` (Date): User's birthday
-- `linkedAccounts` (object): User's linked social accounts
-  - `facebook` (string): User's Facebook account ID
+- `linkedAccounts` (object): User's linked services, mapping from service names to account IDs
+  - `facebook` (string): Facebook ID
 
 #### 4. GET `/users/:id`
 
@@ -90,7 +90,7 @@ See [User schema](#user-schema-users-collection).
 ##### Route parameters
 
 - `service` (string): Service name. Currently, only "facebook" is valid
-- `id` (string): ID of the account
+- `id` (string): Account ID
 
 ##### Response body
 
