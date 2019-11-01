@@ -58,11 +58,17 @@ server.get('/users/:id', async (req, res) => {
   }
 })
 
+/**
+ * Get an user with service id
+ */
 server.get('/users/linkedAccounts/:service/:id', async (req, res) => {
+  const service = req.params.service
   const id = req.params.id
+  let query = {}
+  query["linkedAccounts." + service] = id
   try {
     const Users = await getCollection('users')
-    let result = await Users.findOne({ linkedAccounts: { "facebook": id }})
+    let result = await Users.findOne(query)
     res.code(200).send(result)
   } catch (err) {
     res.code(500)
