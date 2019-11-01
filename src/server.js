@@ -64,8 +64,9 @@ server.get('/users/:id', async (req, res) => {
 server.get('/users/linkedAccounts/:service/:id', async (req, res) => {
   const service = req.params.service
   const id = req.params.id
-  let query = {}
-  query["linkedAccounts." + service] = id
+  let query = {
+    ["linkedAccounts." + service] : id
+  }
   try {
     const Users = await getCollection('users')
     let result = await Users.findOne(query)
