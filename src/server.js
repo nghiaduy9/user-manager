@@ -64,7 +64,7 @@ server.get('/users/:id', async (req, res) => {
 server.get('/users/linkedAccounts/:service/:id', async (req, res) => {
   const service = req.params.service
   const id = req.params.id
-  let query = {
+  const query = {
     ["linkedAccounts." + service] : id
   }
   try {
