@@ -58,6 +58,23 @@ server.get('/users/:id', async (req, res) => {
   }
 })
 
+/**
+ * Get an user with service id
+ */
+server.get('/users/linkedAccounts/:service/:id', async (req, res) => {
+  const { service, id } = req.params
+  const query = {
+    ["linkedAccounts." + service] : id
+  }
+  try {
+    const userCollection = await getCollection('users')
+    const user = await userCollection.findOne(query)
+    res.code(200).send(user)
+  } catch (err) {
+    res.code(500)
+  }
+})
+
 const start = async () => {
   try {
     server.listen(process.env.PORT, '::') // listen to all IPv6 and IPv4 addresses
