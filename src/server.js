@@ -62,15 +62,14 @@ server.get('/users/:id', async (req, res) => {
  * Get an user with service id
  */
 server.get('/users/linkedAccounts/:service/:id', async (req, res) => {
-  const service = req.params.service
-  const id = req.params.id
+  const { service, id } = req.params
   const query = {
     ["linkedAccounts." + service] : id
   }
   try {
-    const Users = await getCollection('users')
-    let result = await Users.findOne(query)
-    res.code(200).send(result)
+    const userCollection = await getCollection('users')
+    const user = await userCollection.findOne(query)
+    res.code(200).send(user)
   } catch (err) {
     res.code(500)
   }
