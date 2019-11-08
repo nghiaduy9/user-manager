@@ -28,7 +28,7 @@ server.post('/users', async (req, res) => {
   const { username, name, email, birthday, linkedAccounts } = req.body
   try {
     const Users = await getCollection('users')
-    await Users.insertOne({
+    const { insertedId } = await Users.insertOne({
       username,
       name,
       email,
@@ -38,7 +38,7 @@ server.post('/users', async (req, res) => {
       createdAt: new Date(),
       updatedAt: new Date()
     })
-    res.code(204)
+    res.code(200).send({ _id: insertedId })
   } catch (err) {
     res.code(500)
   }
@@ -64,7 +64,7 @@ server.get('/users/:id', async (req, res) => {
 server.get('/users/linkedAccounts/:service/:id', async (req, res) => {
   const { service, id } = req.params
   const query = {
-    ["linkedAccounts." + service] : id
+    ['linkedAccounts.' + service]: id
   }
   try {
     const userCollection = await getCollection('users')

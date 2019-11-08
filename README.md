@@ -71,6 +71,10 @@ See [User schema](#user-schema-users-collection).
 - `linkedAccounts` (object): User's linked services, mapping from service names to account IDs
   - `facebook` (string): Facebook ID
 
+##### Response body
+
+- `_id` (ObjectID) : ID of newly created user
+
 #### 4. GET `/users/:id`
 
 > Get the user with `id`
