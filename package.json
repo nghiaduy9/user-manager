@@ -1,12 +1,12 @@
 {
+  "private": true,
   "name": "@night-watch-project/user-manager",
-  "version": "0.0.1",
   "description": "Night Watch user manager",
-  "main": "src/server.js",
-  "repository": "github:night-watch-project/user-manager",
   "author": "Night Watch Project",
   "license": "MIT",
-  "private": true,
+  "repository": "github:night-watch-project/user-manager",
+  "version": "0.0.1",
+  "main": "src/server.js",
   "scripts": {
     "clean": "rm -r yarn.lock node_modules",
     "dev": "NODE_ENV=development node src/server",
