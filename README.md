@@ -4,16 +4,8 @@
 
 ### Requirements
 
-- Node.js >= 8
+- Node.js >= 12.0.0
 - MongoDB >= 3
-- Dotenv files: `.env.production` and/or `.env.development`
-
-### Instructions
-
-```bash
-$ yarn install
-$ yarn start # yarn dev for development
-```
 
 ## DOCUMENTATION
 
@@ -43,14 +35,6 @@ $ yarn start # yarn dev for development
 
 #### 1. GET `/`
 
-> Just for testing
-
-##### Response body
-
-- `iam`: `"/"`
-
-#### 2. GET `/users`
-
 > Get all users
 
 ##### Response body
@@ -58,7 +42,7 @@ $ yarn start # yarn dev for development
 Array of objects:
 See [User schema](#user-schema-users-collection).
 
-#### 3. POST `/users`
+#### 2. POST `/`
 
 > Add a new user
 
@@ -75,7 +59,7 @@ See [User schema](#user-schema-users-collection).
 
 - `_id` (ObjectID) : ID of newly created user
 
-#### 4. GET `/users/:id`
+#### 3. GET `/:id`
 
 > Get the user with `id`
 
@@ -87,7 +71,7 @@ See [User schema](#user-schema-users-collection).
 
 See [User schema](#user-schema-users-collection).
 
-#### 5. GET `/users/linkedAccounts/:service/:id`
+#### 4. GET `/linkedAccounts/:service/:id`
 
 > Get an user via linked social network accounts
 
