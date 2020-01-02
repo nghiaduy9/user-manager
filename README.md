@@ -24,12 +24,12 @@
 
 ##### Response body
 
-Array of objects:
-See [User schema](#user-schema-users-collection).
+Array of user objects:
+See [User schema][0].
 
 #### 2. POST `/`
 
-> Add a new user
+> Create a new user
 
 ##### Request body
 
@@ -47,7 +47,7 @@ See [User schema](#user-schema-users-collection).
 
 #### 3. GET `/:id`
 
-> Get the user with `id`
+> Get an user via ID
 
 ##### Route parameters
 
@@ -55,7 +55,7 @@ See [User schema](#user-schema-users-collection).
 
 ##### Response body
 
-See [User schema](#user-schema-users-collection).
+See [User schema][0].
 
 #### 4. GET `/linkedAccounts/:service/:id`
 
@@ -68,4 +68,6 @@ See [User schema](#user-schema-users-collection).
 
 ##### Response body
 
-See [User schema](#user-schema-users-collection).
+See [User schema][0].
+
+[0]: https://github.com/night-watch-project/user-manager/blob/master/src/models/user.js

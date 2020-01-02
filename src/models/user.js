@@ -26,7 +26,7 @@ const Avatar = {
 }
 
 const Email = {
-  bsonType: ['string', 'null'],
+  bsonType: 'string',
   minLength: 6,
   maxLength: 256,
   description: "User's email"
@@ -72,6 +72,7 @@ const User = {
     '_id',
     'name',
     'avatar',
+    'email',
     'linkedAccounts',
     'privilege',
     'createdAt',
@@ -91,6 +92,4 @@ const User = {
   }
 }
 
-module.exports = {
-  User
-}
+module.exports = { User }
