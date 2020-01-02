@@ -12,17 +12,19 @@ server.get('/', async (req, res) => {
     let result = await Users.find({}).toArray()
     res.code(200).send(result)
   } catch (err) {
+    req.log.error(err.message)
     res.code(500)
   }
 })
 
 server.post('/', async (req, res) => {
-  const { username, name, email, birthday, linkedAccounts } = req.body
+  const { username, name, avatar, email, birthday, linkedAccounts } = req.body
   try {
     const Users = await getCollection('users')
     const { insertedId } = await Users.insertOne({
       username,
       name,
+      avatar,
       email,
       birthday,
       linkedAccounts,
@@ -32,6 +34,7 @@ server.post('/', async (req, res) => {
     })
     res.code(200).send({ _id: insertedId })
   } catch (err) {
+    req.log.error(err.message)
     res.code(500)
   }
 })
@@ -43,6 +46,7 @@ server.get('/:id', async (req, res) => {
     let result = await Users.findOne({ _id: new mongo.ObjectID(id) })
     res.code(200).send(result)
   } catch (err) {
+    req.log.error(err.message)
     res.code(500)
   }
 })
@@ -57,6 +61,7 @@ server.get('/linkedAccounts/:service/:id', async (req, res) => {
     const user = await userCollection.findOne(query)
     res.code(200).send(user)
   } catch (err) {
+    req.log.error(err.message)
     res.code(500)
   }
 })

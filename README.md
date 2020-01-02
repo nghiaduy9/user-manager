@@ -16,21 +16,6 @@
 - `MONGODB_URI` (string): MongoDB URI
 - `MONGODB_DB_NAME` (string): Database name
 
-### Database (MongoDB)
-
-#### User schema ("users" collection)
-
-- `_id` (ObjectID): ID of the user
-- `username` (string): Username
-- `name` (string): User's full name
-- `email` (string): User's email
-- `birthday` (Date): User's birthday
-- `linkedAccounts` (object): User's linked services, mapping from service names to account IDs
-  - `facebook` (string): Facebook ID
-- `privilege` (string): User's privilege
-- `createdAt` (Date): Time at which the user was created
-- `updatedAt` (Date): Time at which the user was updated
-
 ### Routes
 
 #### 1. GET `/`
@@ -50,6 +35,7 @@ See [User schema](#user-schema-users-collection).
 
 - `username` (string): Username
 - `name` (string): User's full name
+- `avatar` (string): User's avatar
 - `email` (string): User's email
 - `birthday` (Date): User's birthday
 - `linkedAccounts` (object): User's linked services, mapping from service names to account IDs
