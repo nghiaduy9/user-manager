@@ -1,43 +1,41 @@
-const Id = {
+const _id = {
   bsonType: 'objectId',
-  minLength: 24,
-  maxLength: 24,
   description: 'ID of the user'
 }
 
-const Username = {
+const username = {
   bsonType: ['string', 'null'],
   minLength: 6,
   maxLength: 24,
-  pattern: '^[A-Za-z0-9]{6, 24}$',
-  description: 'Username'
+  pattern: '^[A-Za-z0-9]+$',
+  description: 'username'
 }
 
-const Name = {
+const name = {
   bsonType: 'string',
   minLength: 6,
   maxLength: 48,
   description: "User's full name"
 }
 
-const Avatar = {
+const avatar = {
   bsonType: 'string',
-  description: "User's avatar"
+  description: "User's avatar URL"
 }
 
-const Email = {
+const email = {
   bsonType: 'string',
   minLength: 6,
   maxLength: 256,
   description: "User's email"
 }
 
-const Birthday = {
+const birthday = {
   bsonType: ['date', 'null'],
   description: "User's birthday"
 }
 
-const LinkedAccounts = {
+const linkedAccounts = {
   bsonType: 'object',
   required: ['facebook'],
   properties: {
@@ -51,17 +49,17 @@ const LinkedAccounts = {
   description: "User's linked services, mapping from service names to account IDs"
 }
 
-const Privilege = {
+const privilege = {
   enum: ['normal'],
   description: "User's privilege"
 }
 
-const CreatedAt = {
+const createdAt = {
   bsonType: 'date',
   description: 'Time at which the user was created'
 }
 
-const UpdatedAt = {
+const updatedAt = {
   bsonType: 'date',
   description: 'Time at which the data was last updated'
 }
@@ -79,16 +77,16 @@ const User = {
     'updatedAt'
   ],
   properties: {
-    _id: Id,
-    username: Username,
-    name: Name,
-    avatar: Avatar,
-    email: Email,
-    birthday: Birthday,
-    linkedAccounts: LinkedAccounts,
-    privilege: Privilege,
-    createdAt: CreatedAt,
-    updatedAt: UpdatedAt
+    _id,
+    username,
+    name,
+    avatar,
+    email,
+    birthday,
+    linkedAccounts,
+    privilege,
+    createdAt,
+    updatedAt
   }
 }
 
