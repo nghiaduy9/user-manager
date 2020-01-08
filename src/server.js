@@ -8,8 +8,8 @@ const { getCollection } = require('./database')
 
 server.get('/', async (req, res) => {
   try {
-    const Users = await getCollection('users')
-    let result = await Users.find({}).toArray()
+    const userCollection = await getCollection('users')
+    let result = await userCollection.find({}).toArray()
     res.code(200).send(result)
   } catch (err) {
     req.log.error(err.message)
@@ -20,8 +20,8 @@ server.get('/', async (req, res) => {
 server.post('/', async (req, res) => {
   const { username, name, avatar, email, birthday, linkedAccounts } = req.body
   try {
-    const Users = await getCollection('users')
-    const { insertedId } = await Users.insertOne({
+    const userCollection = await getCollection('users')
+    const { insertedId } = await userCollection.insertOne({
       username,
       name,
       avatar,
@@ -42,8 +42,8 @@ server.post('/', async (req, res) => {
 server.get('/:id', async (req, res) => {
   const id = req.params.id
   try {
-    const Users = await getCollection('users')
-    let result = await Users.findOne({ _id: new mongo.ObjectID(id) })
+    const userCollection = await getCollection('users')
+    let result = await userCollection.findOne({ _id: new mongo.ObjectID(id) })
     res.code(200).send(result)
   } catch (err) {
     req.log.error(err.message)
