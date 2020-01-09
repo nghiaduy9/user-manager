@@ -13,7 +13,7 @@ server.get('/', async (req, res) => {
     res.code(200).send(result)
   } catch (err) {
     req.log.error(err.message)
-    res.code(500)
+    res.code(500).send()
   }
 })
 
@@ -35,7 +35,7 @@ server.post('/', async (req, res) => {
     res.code(200).send({ _id: insertedId })
   } catch (err) {
     req.log.error(err.message)
-    res.code(500)
+    res.code(500).send()
   }
 })
 
@@ -47,7 +47,7 @@ server.get('/:id', async (req, res) => {
     res.code(200).send(result)
   } catch (err) {
     req.log.error(err.message)
-    res.code(500)
+    res.code(500).send()
   }
 })
 
@@ -62,7 +62,7 @@ server.get('/linkedAccounts/:service/:id', async (req, res) => {
     res.code(200).send(user)
   } catch (err) {
     req.log.error(err.message)
-    res.code(500)
+    res.code(500).send()
   }
 })
 
