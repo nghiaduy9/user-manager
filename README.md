@@ -63,11 +63,21 @@ See [User schema][0].
 
 ##### Route parameters
 
-- `service` (string): Service name. Currently, only "facebook" is valid
+- `service` (string): Service name
 - `id` (string): Account ID
 
 ##### Response body
 
 See [User schema][0].
+
+#### 5. PUT `/linkedAccounts/:service/:id/:newID`
+
+> Update the ID of a linked social network account
+
+##### Route parameters
+
+- `service` (string): Service name
+- `id` (string): Old ID
+- `newID` (string): New ID
 
 [0]: https://github.com/night-watch-project/user-manager/blob/master/src/models/user.js

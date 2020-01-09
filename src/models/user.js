@@ -43,11 +43,12 @@ const linkedAccounts = {
       bsonType: 'string',
       minLength: 16,
       maxLength: 16,
-      description: 'Facebook ID'
+      description: 'Facebook app-scoped ID'
     },
     messenger: {
       bsonType: 'string',
       minLength: 16,
+      maxLength: 21,
       description: 'Facebook page-scoped ID for Messenger'
     }
   },
