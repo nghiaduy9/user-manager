@@ -37,13 +37,18 @@ const birthday = {
 
 const linkedAccounts = {
   bsonType: 'object',
-  required: ['facebook'],
+  required: ['facebook', 'messenger'],
   properties: {
     facebook: {
       bsonType: 'string',
       minLength: 16,
       maxLength: 16,
       description: 'Facebook ID'
+    },
+    messenger: {
+      bsonType: 'string',
+      minLength: 16,
+      description: 'Facebook page-scoped ID for Messenger'
     }
   },
   description: "User's linked services, mapping from service names to account IDs"
