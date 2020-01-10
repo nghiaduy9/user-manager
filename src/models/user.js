@@ -1,9 +1,9 @@
-const _id = {
+const _idSchema = {
   bsonType: 'objectId',
   description: 'ID of the user'
 }
 
-const username = {
+const usernameSchema = {
   bsonType: ['string', 'null'],
   minLength: 6,
   maxLength: 24,
@@ -11,31 +11,31 @@ const username = {
   description: 'username'
 }
 
-const name = {
+const nameSchema = {
   bsonType: 'string',
   minLength: 6,
   maxLength: 48,
   description: "User's full name"
 }
 
-const avatar = {
+const avatarSchema = {
   bsonType: 'string',
   description: "User's avatar URL"
 }
 
-const email = {
+const emailSchema = {
   bsonType: 'string',
   minLength: 6,
   maxLength: 256,
   description: "User's email"
 }
 
-const birthday = {
+const birthdaySchema = {
   bsonType: ['date', 'null'],
   description: "User's birthday"
 }
 
-const linkedAccounts = {
+const linkedAccountsSchema = {
   bsonType: 'object',
   required: ['facebook', 'messenger'],
   properties: {
@@ -55,22 +55,22 @@ const linkedAccounts = {
   description: "User's linked services, mapping from service names to account IDs"
 }
 
-const privilege = {
+const privilegeSchema = {
   enum: ['normal'],
   description: "User's privilege"
 }
 
-const createdAt = {
+const createdAtSchema = {
   bsonType: 'date',
   description: 'Time at which the user was created'
 }
 
-const updatedAt = {
+const updatedAtSchema = {
   bsonType: 'date',
   description: 'Time at which the data was last updated'
 }
 
-const User = {
+const userSchema = {
   bsonType: 'object',
   required: [
     '_id',
@@ -83,17 +83,17 @@ const User = {
     'updatedAt'
   ],
   properties: {
-    _id,
-    username,
-    name,
-    avatar,
-    email,
-    birthday,
-    linkedAccounts,
-    privilege,
-    createdAt,
-    updatedAt
+    _id: _idSchema,
+    username: usernameSchema,
+    name: nameSchema,
+    avatar: avatarSchema,
+    email: emailSchema,
+    birthday: birthdaySchema,
+    linkedAccounts: linkedAccountsSchema,
+    privilege: privilegeSchema,
+    createdAt: createdAtSchema,
+    updatedAt: updatedAtSchema
   }
 }
 
-module.exports = { User }
+module.exports = { userSchema }
