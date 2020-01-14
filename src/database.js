@@ -1,5 +1,5 @@
 const { MongoClient } = require('mongodb')
-const { User: userSchema } = require('./models/user')
+const { userSchema } = require('./models/user')
 
 const { MONGODB_URI, MONGODB_DB_NAME } = process.env
 const client = new MongoClient(MONGODB_URI, { useNewUrlParser: true })
