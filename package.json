@@ -1,23 +1,26 @@
 {
+  "private": true,
   "name": "@night-watch-project/user-manager",
-  "version": "0.0.1",
   "description": "Night Watch user manager",
-  "main": "src/server.js",
-  "repository": "github:night-watch-project/user-manager",
   "author": "Night Watch Project",
   "license": "MIT",
-  "private": true,
+  "repository": "github:night-watch-project/user-manager",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "version": "0.2.0",
+  "main": "src/server.js",
   "scripts": {
     "clean": "rm -r yarn.lock node_modules",
     "dev": "NODE_ENV=development node src/server",
     "start": "NODE_ENV=production node src/server"
   },
   "dependencies": {
-    "dotenv-flow": "^3.1.0",
     "fastify": "^2.8.0",
-    "mongodb": "^3.3.2"
+    "mongodb": "^3.3.2",
+    "nanoid": "^2.1.9"
   },
   "devDependencies": {
-    "eslint": "^6.4.0"
+    "eslint": "^6.8.0"
   }
 }

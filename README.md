@@ -4,16 +4,8 @@
 
 ### Requirements
 
-- Node.js >= 8
+- Node.js >= 12.0.0
 - MongoDB >= 3
-- Dotenv files: `.env.production` and/or `.env.development`
-
-### Instructions
-
-```bash
-$ yarn install
-$ yarn start # yarn dev for development
-```
 
 ## DOCUMENTATION
 
@@ -24,56 +16,38 @@ $ yarn start # yarn dev for development
 - `MONGODB_URI` (string): MongoDB URI
 - `MONGODB_DB_NAME` (string): Database name
 
-### Database (MongoDB)
-
-#### User schema ("users" collection)
-
-- `_id` (ObjectID): ID of the user
-- `username` (string): Username
-- `name` (string): User's full name
-- `email` (string): User's email
-- `birthday` (Date): User's birthday
-- `linkedAccounts` (object): User's linked services
-  - `facebook` (string): Facebook ID
-- `privilege` (string): User's privilege
-- `createdAt` (Date): Time at which the user was created
-- `updatedAt` (Date): Time at which the user was updated
-
 ### Routes
 
 #### 1. GET `/`
-
-> Just for testing
-
-##### Response body
-
-- `iam`: `"/"`
-
-#### 2. GET `/users`
 
 > Get all users
 
 ##### Response body
 
-Array of objects:
-See [User schema](#user-schema-users-collection).
+Array of user objects:
+See [User schema][0].
 
-#### 3. POST `/users`
+#### 2. POST `/`
 
-> Add a new user
+> Create a new user
 
 ##### Request body
 
 - `username` (string): Username
-- `name` (string): User's fullname
+- `name` (string): User's full name
+- `avatar` (string): User's avatar
 - `email` (string): User's email
 - `birthday` (Date): User's birthday
-- `linkedAccounts` (object): User's linked social accounts
-  - `facebook` (string): User's Facebook account ID
+- `linkedAccounts` (object): User's linked services, mapping from service names to account IDs
+  - `facebook` (string): Facebook ID
 
-#### 4. GET `/users/:id`
+##### Response body
 
-> Get the user with `id`
+- `_id` (ObjectID) : ID of newly created user
+
+#### 3. GET `/:id`
+
+> Get an user via ID
 
 ##### Route parameters
 
@@ -81,17 +55,29 @@ See [User schema](#user-schema-users-collection).
 
 ##### Response body
 
-See [User schema](#user-schema-users-collection).
+See [User schema][0].
 
-#### 5. GET `/users/linkedAccounts/:service/:id`
+#### 4. GET `/linkedAccounts/:service/:id`
 
 > Get an user via linked social network accounts
 
 ##### Route parameters
 
-- `service` (string): Service name. Currently, only "facebook" is valid
-- `id` (string): ID of the account
+- `service` (string): Service name
+- `id` (string): Account ID
 
 ##### Response body
 
-See [User schema](#user-schema-users-collection).
+See [User schema][0].
+
+#### 5. PUT `/linkedAccounts/:service/:id/:newID`
+
+> Update the ID of a linked social network account
+
+##### Route parameters
+
+- `service` (string): Service name
+- `id` (string): Old ID
+- `newID` (string): New ID
+
+[0]: https://github.com/night-watch-project/user-manager/blob/master/src/models/user.js

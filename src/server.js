@@ -1,60 +1,94 @@
-require('dotenv-flow').config()
-
 const fastify = require('fastify')
 const mongo = require('mongodb')
+const nanoid = require('nanoid/async')
 
 const loggerLevel = process.env.NODE_ENV !== 'production' ? 'debug' : 'info'
 const server = fastify({ ignoreTrailingSlash: true, logger: { level: loggerLevel } })
 
 const { getCollection } = require('./database')
 
-/**
- * Get all users
- */
-server.get('/users', async (req, res) => {
+server.get('/', async (req, res) => {
   try {
-    const Users = await getCollection('users')
-    let result = await Users.find({}).toArray()
-    res.code(200).send(result)
+    const userCollection = await getCollection('users')
+    let result = await userCollection.find({}).toArray()
+    res.status(200).send(result)
   } catch (err) {
-    res.code(500)
+    server.log.error(err.message)
+    res.status(500).send()
   }
 })
 
-/**
- * Add an user
- */
-server.post('/users', async (req, res) => {
-  const { username, name, email, birthday, linkedAccounts } = req.body
+server.post('/', async (req, res) => {
+  const { username, name, avatar, email, birthday, linkedAccounts } = req.body
   try {
-    const Users = await getCollection('users')
-    await Users.insertOne({
+    const userCollection = await getCollection('users')
+    const now = new Date()
+    const { insertedId } = await userCollection.insertOne({
       username,
       name,
+      avatar,
       email,
       birthday,
-      linkedAccounts,
+      linkedAccounts: {
+        ...linkedAccounts,
+        messenger: 'AUTH_' + (await nanoid(16))
+      },
       privilege: 'normal',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      createdAt: now,
+      updatedAt: now
     })
-    res.code(204)
+    res.status(200).send({ _id: insertedId })
   } catch (err) {
-    res.code(500)
+    server.log.error(err.message)
+    res.status(500).send()
   }
 })
 
-/**
- * Get an user with id
- */
-server.get('/users/:id', async (req, res) => {
+server.get('/:id', async (req, res) => {
   const id = req.params.id
   try {
-    const Users = await getCollection('users')
-    let result = await Users.findOne({ _id: new mongo.ObjectID(id) })
-    res.code(200).send(result)
+    const userCollection = await getCollection('users')
+    let result = await userCollection.findOne({ _id: new mongo.ObjectID(id) })
+    res.status(200).send(result)
   } catch (err) {
-    res.code(500)
+    server.log.error(err.message)
+    res.status(500).send()
+  }
+})
+
+server.get('/linkedAccounts/:service/:id', async (req, res) => {
+  const { service, id } = req.params
+  try {
+    const userCollection = await getCollection('users')
+    const user = await userCollection.findOne({
+      ['linkedAccounts.' + service]: id
+    })
+    res.status(200).send(user)
+  } catch (err) {
+    server.log.error(err.message)
+    res.status(500).send()
+  }
+})
+
+server.put('/linkedAccounts/:service/:id/:newID', async (req, res) => {
+  const { service, id, newID } = req.params
+  try {
+    const userCollection = await getCollection('users')
+    await userCollection.updateOne(
+      {
+        ['linkedAccounts.' + service]: id
+      },
+      {
+        $set: {
+          ['linkedAccounts.' + service]: newID
+        },
+        $currentDate: { updatedAt: true }
+      }
+    )
+    res.status(204)
+  } catch (err) {
+    server.log.error(err.message)
+    res.status(500).send()
   }
 })
 
